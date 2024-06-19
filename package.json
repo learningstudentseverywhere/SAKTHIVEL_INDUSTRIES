@@ -7,14 +7,16 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4",
+    "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.20.23",
     "@sap/xssec": "^3",
-    "@sap/cds-hana": "^2"
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^3",
+    "@sap/hdi-deploy": "4.9.5",
     "eslint": "^9"
   },
   "scripts": {
@@ -23,6 +25,9 @@
   "cds": {
     "requires": {
       "db": "hana"
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
     }
   }
 }
