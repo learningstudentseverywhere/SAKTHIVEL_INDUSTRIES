@@ -17,10 +17,15 @@
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^3",
     "@sap/hdi-deploy": "4.9.5",
-    "eslint": "^9"
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-cottonindustryapp": "cds watch --open cottonindustryapp/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy SAKTHIVEL_INDUSTRIES --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
     "requires": {
@@ -29,5 +34,9 @@
     "hana": {
       "deploy-format": "hdbtable"
     }
-  }
+  },
+  "sapux": [
+    "app/cottonindustryapp",
+    "app/cottonindustryapp"
+  ]
 }
