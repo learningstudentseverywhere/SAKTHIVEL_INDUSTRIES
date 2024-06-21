@@ -4,6 +4,7 @@
     {
       "name": "cds serve",
       "request": "launch",
+      "port": "4005",
       "type": "node",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "cds",
