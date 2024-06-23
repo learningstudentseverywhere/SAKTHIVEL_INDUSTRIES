@@ -1,4 +1,4 @@
-using {cottonindustryservice as service} from './cotton-industries';
+using {cottonindustryservice as service} from '../../cotton-industries';
 
 
 annotate service.OrderHeader with {

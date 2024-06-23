@@ -1,4 +1,4 @@
-using {cottonindustryservice as cotton} from './cotton-industries';
+using {cottonindustryservice as cotton} from '../cotton-industries';
 
 
 annotate cotton.OrderHeader with 
