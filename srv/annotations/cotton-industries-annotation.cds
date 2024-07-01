@@ -47,6 +47,10 @@ annotate cotton.OrderHeader with
                 $Type:'UI.DataField',
                 Value : order_id
 
+            },
+            {
+                $Type:'UI.DataField',
+                Value : order_total
             }
          ]
      },
@@ -56,6 +60,12 @@ annotate cotton.OrderHeader with
             ID : 'OrderCompleteDetails',
             Label : 'Order Complete Details',
             Target : '@UI.FieldGroup#OrderCompleteDetails'
+        },
+          {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'OrderItemDetails',
+            Label : 'Order Item Details',
+            Target : 'to_OrderItems/@UI.LineItem'
         }
      ],
      FieldGroup #OrderCompleteDetails : {
@@ -69,8 +79,35 @@ annotate cotton.OrderHeader with
                 $Type:'UI.DataField',
                 Value : order_description
             },
+            {
+                $Type : 'UI.DataField',
+                Value : order_total
+            }
 
         ]
      }
+   
 
+};
+
+annotate cotton.OrderItems with @UI:{
+    LineItem  : [
+        {
+            $Type:'UI.DataField',
+            Value:order_description
+        },
+        {  $Type:'UI.DataField',
+            Value:item_id
+        },
+        {
+            $Type:'UI.DataField',
+            Value:item_description
+        },
+        {
+            $Type:'UI.DataField',
+            Value : Quantity
+        },
+        {$Type:'UI.DataField',
+         Value : Amount}
+    ]
 };

@@ -1,0 +1,24 @@
+###  This request is not triggering the after handler of OrderItems because it is not an active entity as we have said active enity is false
+##As this is not an active entity ,it is not updating the Order Items table, it is updating the Order_Item.drafts table
+## As this is updating the drafts table, the after handler of Order Items is not triggering
+### If i want to edit an acitve Entity(Original Record in Order Item Table) , we have to set the IsActiveEntity as true
+PATCH http://localhost:4004/odata/v4/cottonindustryservice/OrderItems(order_id='ORD1002',item_id='ITEM1001',IsActiveEntity=false)
+Content-Type: application/json
+
+{
+   "item_description":"Jattis"
+}
+
+
+###
+GET http://localhost:4004/odata/v4/cottonindustryservice/Employees
+
+
+###
+PATCH http://localhost:4004/odata/v4/cottonindustryservice/Employees(employee_id='EMP001')
+Content-Type: application/json
+
+{
+   "employee_name":"Juggu"
+}
+

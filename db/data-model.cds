@@ -10,6 +10,7 @@ entity Employees{
 entity OrderHeader { 
     key order_id : String(10);
         order_description : String;
+        order_total : Integer;
         to_OrderItems : Composition of many OrderItems on to_OrderItems.order_id = $self.order_id;
 }
 
