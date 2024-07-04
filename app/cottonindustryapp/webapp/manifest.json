@@ -122,6 +122,7 @@
           "options": {
             "settings": {
               "contextPath": "/OrderHeader",
+              "enhanceI18n":"i18n/CustomOrders.properties",
               "variantManagement": "Page",
               "navigation": {
                 "OrderHeader": {

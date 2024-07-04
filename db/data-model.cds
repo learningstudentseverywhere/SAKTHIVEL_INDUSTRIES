@@ -11,6 +11,8 @@ entity OrderHeader {
     key order_id : String(10);
         order_description : String;
         order_total : Integer;
+        order_confirmed_date : Date;
+        order_issued_date:Date;
         to_OrderItems : Composition of many OrderItems on to_OrderItems.order_id = $self.order_id;
 }
 
