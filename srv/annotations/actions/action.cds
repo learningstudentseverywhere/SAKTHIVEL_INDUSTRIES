@@ -1,8 +1,10 @@
 using {cottonindustryservice as service} from '../../cotton-industries';
 
 
-//To make the delete,create button Invisisble
+//To hide the delete,create buttons,set to true
 annotate service.OrderHeader with @UI:{
-    DeleteHidden : true,
-    CreateHidden : true,
+    DeleteHidden : false,
+    CreateHidden : false,
 };
+
+

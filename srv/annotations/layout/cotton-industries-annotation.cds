@@ -113,20 +113,3 @@ annotate cotton.OrderItems with @UI: {LineItem: [
     }
 ]};
 
-//If no filter-restriction is provided, the filter field is treated as a multi-valued field.
-annotate cotton.OrderHeader with @(
-    Capabilities: {
-      FilterRestrictions: {
-        FilterExpressionRestrictions: [
-                 {
-                     Property          : 'order_confirmed_date',
-                     AllowedExpressions: 'SingleValue'
-                 },
-                 {
-                     Property          : 'order_issued_date',
-                     AllowedExpressions: 'SingleRange'
-                }
-                                      ]
-                          }
-                  }
-        );
