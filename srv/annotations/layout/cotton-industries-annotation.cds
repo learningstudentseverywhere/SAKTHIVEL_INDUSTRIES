@@ -18,6 +18,11 @@ annotate cotton.OrderHeader with
         {
             $Type: 'UI.DataField',
             Value: order_description
+        },
+         {
+            $Type:'UI.DataFieldForAction',
+            Action:'cotton.ApplyDiscount',
+            Label : 'Apply Discount'
         }
     ],
     HeaderInfo                      : {
