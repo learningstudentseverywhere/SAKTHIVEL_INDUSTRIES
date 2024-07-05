@@ -26,3 +26,13 @@ annotate service.OrderHeader with @(Capabilities: {FilterRestrictions: {FilterEx
 //               Deletable: true
 // }});
 
+
+
+// Disable the Delete action based on some conditions
+annotate service.OrderHeader with @(
+   Capabilities.DeleteRestrictions : {
+       $Type : 'Capabilities.DeleteRestrictionsType',
+      Deletable: insertDeleteRestriction
+   }   
+);
+
