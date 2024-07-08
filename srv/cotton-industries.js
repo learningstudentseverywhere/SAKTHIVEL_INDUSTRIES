@@ -66,4 +66,39 @@ module.exports = cds.service.impl(async function() {
     this.after('SAVE', 'OrderItems', async (req) => {
         console.log("Entered After PUT on Active Instances");
     });
+
+    this.on('ApplyDiscount',async req=>{
+
+      //Own Method -- Not refreshing in table automatically 
+    //   let HeaderData = await SELECT.from('cottonindustries_OrderHeader').where(req.query.SELECT.from.ref[0].where)
+    //   HeaderData[0].ORDER_TOTAL = HeaderData[0].ORDER_TOTAL - 100;
+    //   let response = await UPDATE.entity('cottonindustries_OrderHeader').data(HeaderData[0]).where({order_id:req.query.SELECT.from.ref[0].where[2].val})
+    //   let final_Response = await SELECT.from('cottonindustries_OrderHeader').where({order_id:req.query.SELECT.from.ref[0].where,IsActiveEntity:true})
+    //   return final_Response;
+      //Own Method
+
+
+
+    //Standard Method
+    //Getting the Table name
+    let Target_Entity = req.target
+
+    //Getting the req.params, this is stored in variable to update the table finally
+    const [{order_id, IsActiveEntity}] = req.params
+
+    //Get the record from the table 
+    let HeaderData = await SELECT.from(Target_Entity).where(req.query.SELECT.from.ref[0].where);
+
+    //Apply discount
+    HeaderData[0].order_total = HeaderData[0].order_total - 100;
+
+    //Update back to the table
+    await UPDATE.entity(Target_Entity).data(HeaderData[0]).where({order_id:req.query.SELECT.from.ref[0].where[2].val})
+
+    //Returning only the changed order id
+    return this.read('OrderHeader',{order_id, IsActiveEntity})
+
+    //Standard Method
+
+    });
 });
