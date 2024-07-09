@@ -13,13 +13,13 @@ annotate service.OrderHeader with @(
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Action : 'cotton.ApplyDiscount',
-            Label : 'Apply Discount',
+            Action : 'service.ApplyDiscount',
+            Label : 'Apply Rs.100 Discount',
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Action : 'cottonindustryservice.ApplyTax',
-            Label : 'ApplyTax',
+            Action : 'cottonindustryservice.ApplyCoupon',
+            Label : 'Apply Coupon',
         },
     ]
 );
