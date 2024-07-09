@@ -8,7 +8,7 @@ service cottonindustryservice{
        @Common.IsActionCritical:true
        action ApplyDiscount() returns OrderHeader;
 
-       action ApplyCoupon(coupon:inText:CouponCode) returns OrderHeader;
+       action ApplyCoupon(coupon:inText:CouponCode @mandatory) returns OrderHeader;
     };
     entity OrderItems as projection on ctind.OrderItems;
 
