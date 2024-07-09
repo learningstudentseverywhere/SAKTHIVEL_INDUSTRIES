@@ -12,6 +12,14 @@ annotate service.OrderHeader with @(
             Value : order_description,
         },
         {
+            $Type:'UI.DataField',
+            Value : order_total
+        },
+        {
+            $Type:'UI.DataField',
+            Value : insertDeleteRestriction
+        },
+        {
             $Type : 'UI.DataFieldForAction',
             Action : 'service.ApplyDiscount',
             Label : 'Apply Rs.100 Discount',
