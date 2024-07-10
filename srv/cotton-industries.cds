@@ -5,9 +5,9 @@ service cottonindustryservice{
     entity Employees as projection on ctind.Employees;
     entity OrderHeader as projection on ctind.OrderHeader actions {
 
-       @Common.IsActionCritical:true
+       @Common.IsActionCritical:true   //For confirmation Popup
        action ApplyDiscount() returns OrderHeader;
-
+             
        action ApplyCoupon(@(UI.ParameterDefaultValue : 'GET50OFF')coupon:inText:CouponCode @mandatory) returns OrderHeader;
     };
     entity OrderItems as projection on ctind.OrderItems;

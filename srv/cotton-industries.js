@@ -69,7 +69,7 @@ module.exports = cds.service.impl(async function() {
 
     this.on('ApplyDiscount',async req=>{
 
-      //Own Method -- Not refreshing in table automatically 
+      //Own Method -- Not refreshing in UI table automatically 
     //   let HeaderData = await SELECT.from('cottonindustries_OrderHeader').where(req.query.SELECT.from.ref[0].where)
     //   HeaderData[0].ORDER_TOTAL = HeaderData[0].ORDER_TOTAL - 100;
     //   let response = await UPDATE.entity('cottonindustries_OrderHeader').data(HeaderData[0]).where({order_id:req.query.SELECT.from.ref[0].where[2].val})
@@ -101,4 +101,8 @@ module.exports = cds.service.impl(async function() {
     //Standard Method
 
     });
+
+    this.on('ApplyCoupon',async req=>{
+        console.log('Entered');
+    })
 });
