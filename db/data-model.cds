@@ -14,6 +14,7 @@ entity OrderHeader {
         order_confirmed_date : Date;
         order_issued_date:Date;
         insertDeleteRestriction:Boolean;
+        discountAvailalbe:Boolean;
         to_OrderItems : Composition of many OrderItems on to_OrderItems.order_id = $self.order_id;
 }
 

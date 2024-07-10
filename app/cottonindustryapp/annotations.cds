@@ -19,6 +19,10 @@ annotate service.OrderHeader with @(
             $Type:'UI.DataField',
             Value : insertDeleteRestriction
         },
+         {
+            $Type:'UI.DataField',
+            Value : discountAvailalbe
+        },
         {
             $Type : 'UI.DataFieldForAction',
             Action : 'service.ApplyDiscount',
