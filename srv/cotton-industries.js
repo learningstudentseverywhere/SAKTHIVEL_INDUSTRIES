@@ -103,6 +103,53 @@ module.exports = cds.service.impl(async function() {
     });
 
     this.on('ApplyCoupon',async req=>{
-        console.log('Entered');
-    })
+        //Getting the input value from User  
+        let couponCode=req.data.coupon
+
+        //Getting the selected Records
+        const [{order_id,IsActiveEntity}] = req.params
+
+        //Fetching the selected records from the table using the paramteres
+        let selectedRecord= await SELECT.from('cottonindustries_OrderHeader').where({order_id:order_id});
+
+        //Fetching the Coupons from the Coupon Table 
+        let couponAvailable = await SELECT.from('cottonindustries_Coupons').where({coupon:couponCode});
+        
+        //Applying Coupon to the Order Total if coupon code is available
+        if(couponAvailable.length>0 && couponAvailable[0].COUNT>0){
+            if(couponCode=='GET50OFF'){
+                //Giving 50%Off
+                selectedRecord[0].ORDER_TOTAL = selectedRecord[0].ORDER_TOTAL*50/100;
+            }
+            else if (couponCode=='GET70OFF'){
+                //Giving 70%Off
+                selectedRecord[0].ORDER_TOTAL = selectedRecord[0].ORDER_TOTAL*70/100
+            }
+
+
+        
+ 
+        //Reduing the coupon Count
+        if(couponAvailable.length>0 && couponAvailable[0].COUNT>0){
+           couponAvailable[0].COUNT = couponAvailable[0].COUNT-1;
+        }
+
+        //Upding the coupon count in the coupon table
+        await UPDATE.entity('cottonindustries_Coupons').data(couponAvailable[0]).where({coupon:couponCode});
+        //Updating the record in the database table
+        await UPDATE.entity('cottonindustries_OrderHeader').data(selectedRecord[0]).where({order_id:order_id});
+
+         }
+        else{
+            req.reject({
+                code:'500',
+                message:'No Coupon Code Matching'
+            });
+        }
+        //Returning the updated record to the table in ui
+        return this.read('OrderHeader',{order_id,IsActiveEntity});
+
+       
+
+    });
 });

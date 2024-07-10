@@ -38,4 +38,5 @@ service cottonindustryservice{
         CouponCode: String @Common.Label:'Apply Coupon code';
          };
 
+    entity Coupons as projection on ctind.Coupons;
 }

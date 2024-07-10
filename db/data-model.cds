@@ -26,3 +26,9 @@ entity OrderItems{
         Quantity : Integer;
         Amount : Integer;
 }
+
+
+entity Coupons{
+    key coupon : String;
+        count : Integer;
+}
