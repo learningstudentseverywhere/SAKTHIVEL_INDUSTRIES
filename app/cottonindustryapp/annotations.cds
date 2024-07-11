@@ -33,5 +33,17 @@ annotate service.OrderHeader with @(
             Action : 'cottonindustryservice.ApplyCoupon',
             Label : 'Apply Coupon',
         },
+        {
+            $Type : 'UI.DataFieldForAnnotation',
+            Target : '@UI.DataPoint#delivery_Progress',
+            Label : 'Delivery Progress',
+        },
     ]
+);
+annotate service.OrderHeader with @(
+    UI.DataPoint #delivery_Progress : {
+        Value : delivery_Progress,
+        Visualization : #Progress,
+        TargetValue : 100,
+    }
 );
