@@ -87,4 +87,22 @@ module.exports = cds.service.impl(async function() {
        
 
     });
+
+    this.before('SAVE','OrderHeader',async req=>{
+        console.log("Entered Before Save Functionlity");
+        let delivery_Status = req.data.delivery_Status_Status
+        if(delivery_Status=='Not Delivered'){
+            req.data.delivery_Progress=0
+        }
+        else if(delivery_Status=='In Transit'){
+            req.data.delivery_Progress=50
+        }
+        else if(delivery_Status=='Delivered'){
+            req.data.delivery_Progress=100
+        }
+        else{
+            req.data.delivery_Progress=0
+        }
+
+    });
 });
