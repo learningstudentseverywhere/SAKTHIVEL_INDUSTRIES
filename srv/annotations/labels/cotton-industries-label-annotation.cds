@@ -4,7 +4,8 @@ using {cottonindustryservice as service} from '../../cotton-industries';
 annotate service.OrderHeader with {
     order_id @title : '{i18n>orderId}';
     order_description @title : '{i18n>orderDesc}';
-    order_total @title : '{i18n>orderTotal}'
+    order_total @title : '{i18n>orderTotal}';
+    delivery_Status @title : 'Delivery Status'
 };
 
 annotate service.OrderItems with{
@@ -15,3 +16,4 @@ annotate service.OrderItems with{
     Quantity @title : '{i18n>Quantity}';
     Amount @title : '{i18n>Amount}';
 }
+

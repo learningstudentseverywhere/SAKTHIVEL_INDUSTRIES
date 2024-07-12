@@ -56,6 +56,10 @@ annotate cotton.OrderHeader with
             {
                 $Type: 'UI.DataField',
                 Value: order_total
+            },
+            {
+                $Type:'UI.DataField',
+                Value : delivery_Status_Status
             }
         ]
     },
@@ -87,6 +91,10 @@ annotate cotton.OrderHeader with
             {
                 $Type: 'UI.DataField',
                 Value: order_total
+            },
+            {
+                $Type:'UI.DataField',
+                Value : delivery_Status_Status
             }
 
         ]
@@ -118,3 +126,18 @@ annotate cotton.OrderItems with @UI: {LineItem: [
     }
 ]};
 
+annotate cotton.OrderHeader with {
+    delivery_Status
+    @Common : { 
+        ValueListWithFixedValues,
+         ValueList : {
+            SearchSupported : true,
+            CollectionPath  : 'DeliveryStatus',
+            Parameters      : [{
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : delivery_Status_Status,
+                ValueListProperty : 'Status'
+            }, ]
+        }
+     }
+}

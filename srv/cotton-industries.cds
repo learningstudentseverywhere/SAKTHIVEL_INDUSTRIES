@@ -39,4 +39,6 @@ service cottonindustryservice{
          };
 
     entity Coupons as projection on ctind.Coupons;
+
+    entity DeliveryStatus as projection on ctind.DeliveryStatus;
 }

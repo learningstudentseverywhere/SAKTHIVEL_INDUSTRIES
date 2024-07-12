@@ -16,6 +16,7 @@ entity OrderHeader {
         insertDeleteRestriction:Boolean;
         discountAvailalbe:Boolean;
         delivery_Progress:Integer;
+        delivery_Status : Association to  DeliveryStatus;
         to_OrderItems : Composition of many OrderItems on to_OrderItems.order_id = $self.order_id;
 }
 
@@ -32,4 +33,10 @@ entity OrderItems{
 entity Coupons{
     key coupon : String;
         count : Integer;
+}
+
+
+entity DeliveryStatus{
+    key Id:Integer;
+    key Status:String;
 }
