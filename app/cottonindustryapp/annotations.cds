@@ -38,6 +38,11 @@ annotate service.OrderHeader with @(
             Target : '@UI.DataPoint#delivery_Progress',
             Label : 'Delivery Progress',
         },
+        {
+            $Type : 'UI.DataFieldForAnnotation',
+            Target : '@Communication.Contact#contact',
+            Label : 'Contact Name',
+        },
     ]
 );
 annotate service.OrderHeader with @(
@@ -45,5 +50,25 @@ annotate service.OrderHeader with @(
         Value : delivery_Progress,
         Visualization : #Progress,
         TargetValue : 100,
+    }
+);
+annotate service.OrderHeader with @(
+    Communication.Contact #contact : {
+        $Type : 'Communication.ContactType',
+        fn : delivery_person_name,
+        tel : [
+            {
+                $Type : 'Communication.PhoneNumberType',
+                type : #work,
+                uri : delivery_person_contact_no,
+            },
+        ],
+        adr : [
+            {
+                $Type : 'Communication.AddressType',
+                type : #work,
+                street : delivery_person_address,
+            },
+        ],
     }
 );
