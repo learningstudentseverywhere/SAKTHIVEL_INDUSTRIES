@@ -16,6 +16,10 @@ annotate service.OrderHeader with @(
             Value : order_total
         },
         {
+           $Type:'UI.DataField',
+           Value : delivery_Status_Status
+        },
+        {
             $Type:'UI.DataField',
             Value : insertDeleteRestriction
         },
