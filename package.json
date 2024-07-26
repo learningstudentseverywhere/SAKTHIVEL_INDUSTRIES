@@ -1,43 +1,45 @@
 {
-    "name": "SAKTHIVEL_INDUSTRIES",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^7",
-        "@sap/cds-hana": "^2",
-        "@sap/hana-client": "^2.20.23",
-        "@sap/xssec": "^3",
-        "express": "^4"
+  "name": "SAKTHIVEL_INDUSTRIES",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.20.23",
+    "@sap/xssec": "^3",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/hdi-deploy": "4.9.5",
+    "@sap/ux-specification": "^1.120.15",
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-cottonindustryapp": "cds watch --open cottonindustryapp/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy SAKTHIVEL_INDUSTRIES --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-presentationvariantapp": "cds watch --open presentationvariantapp/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana"
     },
-    "devDependencies": {
-        "@cap-js/sqlite": "^1",
-        "@sap/cds-dk": "^7",
-        "@sap/eslint-plugin-cds": "^3",
-        "@sap/hdi-deploy": "4.9.5",
-        "@sap/ux-specification": "UI5-1.125",
-        "eslint": "^9",
-        "rimraf": "^5.0.5"
-    },
-    "scripts": {
-        "start": "cds-serve",
-        "watch-cottonindustryapp": "cds watch --open cottonindustryapp/webapp/index.html?sap-ui-xx-viewCache=false",
-        "undeploy": "cf undeploy SAKTHIVEL_INDUSTRIES --delete-services --delete-service-keys --delete-service-brokers",
-        "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
-    },
-    "cds": {
-        "requires": {
-            "db": "hana"
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
-        }
-    },
-    "sapux": [
-        "app/cottonindustryapp",
-        "app/cottonindustryapp"
-    ]
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/cottonindustryapp",
+    "app/cottonindustryapp",
+    "app/presentationvariantapp"
+  ]
 }

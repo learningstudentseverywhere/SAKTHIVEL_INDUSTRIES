@@ -61,9 +61,23 @@ modules:
       - comcottoncottonindustryapp.zip
       name: comcottoncottonindustryapp
       target-path: resources/
+    - artifacts:
+      - comsakthipresentationvariantapp.zip
+      name: comsakthipresentationvariantapp
+      target-path: resources/
 - name: comcottoncottonindustryapp
   type: html5
   path: app/cottonindustryapp
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comsakthipresentationvariantapp
+  type: html5
+  path: app/presentationvariantapp
   build-parameters:
     build-result: dist
     builder: custom
@@ -105,11 +119,20 @@ resources:
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: SAKTHIVEL_INDUSTRIES-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
     service-name: SAKTHIVEL_INDUSTRIES-destination-service
     service-plan: lite
+  requires:
+  - name: srv-api
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

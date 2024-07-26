@@ -6,3 +6,5 @@ using from '../srv/annotations/field-control/field-control';
 using from '../srv/annotations/actions/action';
 using from './cottonindustryapp/annotations';
 using from '../srv/annotations/Variants/selectionVariant';
+
+using from './presentationvariantapp/annotations';
